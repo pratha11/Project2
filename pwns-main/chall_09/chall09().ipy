@@ -1,0 +1,9 @@
+# coding: utf-8
+from pwn import*
+def chall09():
+    p = process("./chall_09")
+    elf = ELF("./chall_09")
+    p.send(xor(elf.string(elf.sym.key), b'\x69'))
+    p.interactive()
+    
+chall09()
